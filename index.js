@@ -21,7 +21,18 @@ const startupMessage = `
 [0m
 `
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => 
+	const start = Date.now();
+
+	while (Date.now() - start < 10000) { 
+	  for (let i = 0; i < 1000000000; i++) {
+	    // Do nothing
+	  }
+	}
+
+	console.log("High CPU usage complete.")
+	res.send('Hello World!')
+)
 
 for (let line of startupMessage.split("\n")) {
 	console.log(line)
